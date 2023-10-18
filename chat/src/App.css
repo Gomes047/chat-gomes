@@ -24,6 +24,7 @@ main{
   display: flex;
   height: 10vh;
 }
+
 .input-area input{
   flex-grow: 1;
 }
@@ -33,8 +34,8 @@ main{
   width: 50%;
   padding: 1rem;
 }
+
 .message.self {
   align-self: flex-end;
-  background-color: lightgreen
-  ;
+  background-color: lightgreen;
 }
