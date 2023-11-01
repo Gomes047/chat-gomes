@@ -1,29 +1,22 @@
+import {useState} from "react"
 import "./App.css"
+import Input from "./Input"
+import Message from "./Message"
 
 export default () => {
+  const [mensagens, setMensagem] = useState([
+    { self: true, date: "04:20 2020/12/12", user: "Dunha", text: "lorem ipsum"},
+    { self: false, date: "04:21 2020/12/12", user: "Dunha", text: "lorem ipsum"},
+    { self: false, date: "04:22 2020/12/12", user: "Dunha", text: "lorem ipsum"},
+    { self: true, date: "04:23 2020/12/12", user: "Dunha", text: "lorem ipsum"},
+  ])
+
   return <>
     <main>
-      <div className="message">
-        <div className="user">
-          Dunha, aquele!
-        </div>
-        <div className="text">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia nulla molestias quos suscipit sed sint quasi fuga ratione, eveniet mollitia ut sit perferendis pariatur necessitatibus officiis impedit facilis fugiat ad!
-        </div>
-      </div>
-
-      <div className="message self">
-        <div className="user">
-          Dunha, aquele!
-        </div>
-        <div className="text">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia nulla molestias quos suscipit sed sint quasi fuga ratione, eveniet mollitia ut sit perferendis pariatur necessitatibus officiis impedit facilis fugiat ad!
-        </div>
-      </div>
+      {mensagens.map(({ self, date, user, text }, index) =>
+        <Message self={self} date={date} user={user} text={text} key={index} />)
+      }
     </main>
-    <div className="input-area">
-      <input type="text" placeholder="Digite sua mensagem" />
-      <button type="submit">enviar</button>
-    </div>
+    <Input setMensagem={setMensagem} mensagens={mensagens} />
   </>
 }
